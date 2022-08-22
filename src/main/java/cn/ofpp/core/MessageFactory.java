@@ -1,6 +1,5 @@
 package cn.ofpp.core;
 
-import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.StrUtil;
 import cn.ofpp.Bootstrap;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateData;
@@ -27,6 +26,8 @@ public class MessageFactory {
 
     /**
      *
+     * {@code {{xxxx.DATA}}} xxxx就是一个变量名，消息中设置变量 然后传递时传递变量即可
+     * <br/>
      * 色彩取值可以从这里挑选 https://arco.design/palette/list
      *
      *  <p>
@@ -39,13 +40,15 @@ public class MessageFactory {
      *      当前气温{{temperature.DATA}}
      *      风力描述{{winddirection.DATA}}
      *      风力级别{{windpower.DATA}}
-     *      空气湿度{{windpower.DATA}}
-     *
+     *      空气湿度{{humidity.DATA}}
+     *      {{author.DATA}}
+     *      {{origin.DATA}}
+     *      {{content.DATA}}
      *  </p>
      */
     private static List<WxMpTemplateData> buildData(Friend friend) {
         WeatherInfo weather = GaodeUtil.getNowWeatherInfo(getAdcCode(friend.getProvince(), friend.getCity()));
-
+        RandomAncientPoetry.AncientPoetry ancientPoetry = RandomAncientPoetry.getNext();
         return List.of(
                 TemplateDataBuilder.builder().name("friendName").value(friend.getFullName()).color("#D91AD9").build(),
                 TemplateDataBuilder.builder().name("howOld").value(friend.getHowOld().toString()).color("#F77234").build(),
@@ -58,26 +61,11 @@ public class MessageFactory {
                 TemplateDataBuilder.builder().name("temperature").value(weather.getTemperature()).color("#722ED1").build(),
                 TemplateDataBuilder.builder().name("winddirection").value(weather.getWinddirection()).color("#F5319D").build(),
                 TemplateDataBuilder.builder().name("windpower").value(weather.getWindpower()).color("#3491FA").build(),
-                TemplateDataBuilder.builder().name("humidity").value(weather.getHumidity()).color("#F77234").build()
-                // 一段备注 可以选择性打开 打开的话 后面就需要加上模板值 {{remark.DATA}}
-                //TemplateDataBuilder.builder().name("remark").value(resolveRemark(friend, weather)).color("#A11069").build()
+                TemplateDataBuilder.builder().name("humidity").value(weather.getHumidity()).color("#F77234").build(),
+                TemplateDataBuilder.builder().name("author").value(ancientPoetry.getAuthor()).color("#F53F3F").build(),
+                TemplateDataBuilder.builder().name("origin").value(ancientPoetry.getOrigin()).color("#F53F3F").build(),
+                TemplateDataBuilder.builder().name("content").value(ancientPoetry.getContent()).color("#F53F3F").build()
         );
-    }
-
-    /**
-     * 备注的规则
-     */
-    private static String resolveRemark(Friend friend, WeatherInfo weatherInfo) {
-        if (friend.getFullName().equals("男/女友二号")) {
-            return "二号的备注";
-        }
-        if (weatherInfo.getWeather().contains("雨")) {
-            return "快回家收衣服!";
-        }
-        if (Convert.toInt(weatherInfo.getTemperature()) > 35) {
-            return "最近天热，谨慎加衣!";
-        }
-        return "没匹配到";
     }
 
     static class TemplateDataBuilder {

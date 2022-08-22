@@ -24,7 +24,7 @@ public class Bootstrap {
     /**
      * 全局模板ID  也可针对单个Friend指定模板
      */
-    public static final String TEMPLATE_ID = "9Q7AyuWyhohPRM68LFk2dCt_T6xDszfhHpr3NaewdGU";
+    public static final String TEMPLATE_ID = "ucDT851lnagJDQTkTz6roGcjXYpcl7mcS_rwS81Y1ds";
 
     /**
      * 初始化
