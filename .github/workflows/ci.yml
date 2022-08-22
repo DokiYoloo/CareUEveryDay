@@ -1,8 +1,9 @@
 name: CareUEveryDay CI
 
 on:
-  schedule:
-    - cron:  '0 8 * * *'
+  push:
+    branches:
+      - workflow_on_push
 
 jobs:
   build:
