@@ -4,6 +4,9 @@
 本项目不需要服务器
 基于Github Actions实现每天固定运行一次
 
+`友情提示：master分支github actions执行规则是每天早上8点自动执行`
+`如果需要监听推送执行 请切换workflow_on_push分支`
+
 为了照顾小白，特地写了一篇完整详细的详细教程放到了我的博客以供参考
 [点击访问我的博客](https://blog.ofpp.cn)
 
