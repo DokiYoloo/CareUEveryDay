@@ -2,7 +2,7 @@
 然后就自己随便做了一个玩了一下
 
 本项目不需要服务器
-基于Github Actions实现每天固定运行一次 需注意GithubActions使用的UTC时间 转换为北京时间需要+8小时处理
+基于Github Actions实现每天固定运行一次 需注意GithubActions使用的UTC时间 转换为北京时间需要-8小时处理
 
 `友情提示：master分支github actions执行规则是每天早上7点自动执行`
 `如果需要监听推送执行 请切换workflow_on_push分支`
