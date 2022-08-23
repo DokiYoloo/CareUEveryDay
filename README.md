@@ -7,6 +7,10 @@
 `友情提示：master分支github actions执行规则是每天早上7点自动执行`
 `如果需要监听推送执行 请切换workflow_on_push分支`
 
+博客可能有些慢 我将内容移植到了语雀笔记 国内访问会很快
+[点击访问语雀笔记](https://www.yuque.com/docs/share/66a239d8-f272-4a90-81bc-b2f5e30ccce6#3cfdeb22)
+
+
 为了照顾小白，特地写了一篇完整详细的详细教程放到了我的博客以供参考
 [点击访问我的博客](https://blog.ofpp.cn)
 
