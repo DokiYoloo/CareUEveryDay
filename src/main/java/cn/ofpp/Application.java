@@ -26,16 +26,27 @@ public class Application {
         Bootstrap.init();
 
         // -----------------  以下为演示数据  ------------------------
+        
+        /*
+        某女/男友:    其实就是名字
+        江苏省:       换为自己的省
+        南京市:       换为自己的市
+        1999-08-08：  生日
+        2011-04-16:   相爱的日子
+        oQFk-5qtXv2uGNCu9oiCiV85KWD8   这个就是我们上面提到的男朋友/女朋友的微信号
+        
+        支持多用户发送，几个用户几个new
+        */
 
         // new 一个 女友
         GirlFriend girlFriend = new GirlFriend("某女友",
-                "江苏省", "南京市", "1999-08-08", "2011-04-16", "oQFk-5qtXv2uGNCu9oiCiV85KWD8");
+                "河南省", "洛阳市", "2000-01-01", "2022-08-24", "oxN1c5pLH7KdqruwdiBiQc9fldoo");
         Wx.sendTemplateMessage(MessageFactory.resolveMessage(girlFriend));
 
         // new 一个 男友 也可单独针对一个friend设置模板ID 以达到不同人不同消息
-        BoyFriend boyFriend = new BoyFriend("某男友",
-                "江苏省", "南京市", "1999-08-08", "2011-04-16", "oQFk-5qtXv2uGNCu9oiCiV85KWD8", "5t7-Ksy8_rw-QmUkxf8J7Pe-QLQ2rBc7RWJi_pSmeh4");
-        Wx.sendTemplateMessage(MessageFactory.resolveMessage(boyFriend));
+        //BoyFriend boyFriend = new BoyFriend("某男友",
+        //        "江苏省", "南京市", "1999-08-08", "2011-04-16", "oQFk-5qtXv2uGNCu9oiCiV85KWD8", "5t7-Ksy8_rw-QmUkxf8J7Pe-QLQ2rBc7RWJi_pSmeh4");
+        //Wx.sendTemplateMessage(MessageFactory.resolveMessage(boyFriend));
     }
 
 }
