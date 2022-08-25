@@ -17,7 +17,6 @@ public class MessageFactory {
 
     public static WxMpTemplateMessage resolveMessage(Friend friend) {
         return WxMpTemplateMessage.builder()
-                .url("https://ofpp.cn") // 点击后的跳转链接 可自行修改 也可以不填
                 .toUser(friend.getUserId())
                 .templateId(StrUtil.emptyToDefault(friend.getTemplateId(), Bootstrap.TEMPLATE_ID))
                 .data(buildData(friend))
@@ -50,11 +49,7 @@ public class MessageFactory {
         WeatherInfo weather = GaodeUtil.getNowWeatherInfo(getAdcCode(friend.getProvince(), friend.getCity()));
         RandomAncientPoetry.AncientPoetry ancientPoetry = RandomAncientPoetry.getNext();
         return List.of(
-                TemplateDataBuilder.builder().name("friendName").value(friend.getFullName()).color("#D91AD9").build(),
-                TemplateDataBuilder.builder().name("howOld").value(friend.getHowOld().toString()).color("#F77234").build(),
-                TemplateDataBuilder.builder().name("howLongLived").value(friend.getHowLongLived()).color("#437004").build(),
-                TemplateDataBuilder.builder().name("nextBirthday").value(friend.getNextBirthdayDays()).color("#771F06").build(),
-                TemplateDataBuilder.builder().name("nextMemorialDay").value(friend.getNextMemorialDay()).color("#551DB0").build(),
+
                 TemplateDataBuilder.builder().name("province").value(friend.getProvince()).color("#F53F3F").build(),
                 TemplateDataBuilder.builder().name("city").value(friend.getCity()).color("#FADC19").build(),
                 TemplateDataBuilder.builder().name("weather").value(weather.getWeather()).color("#00B42A").build(),
