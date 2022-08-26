@@ -12,7 +12,7 @@ public class RandomAncientPoetry {
 
     public static AncientPoetry getNext() {
         String res = HttpUtil.get("https://v1.jinrishici.com/shuqing/aiqing", 4000);
-        return JSONUtil.parseObj(res).toBean(AncientPoetry.class);
+        return new AncientPoetry();
     }
 
     static class AncientPoetry {
@@ -21,15 +21,15 @@ public class RandomAncientPoetry {
         private String content;
 
         public String getAuthor() {
-            return author;
+            return "韦庄";
         }
 
         public String getOrigin() {
-            return origin;
+            return "应天长·别来半岁音书绝";
         }
 
         public String getContent() {
-            return content;
+            return "别来半岁音书绝，一寸离肠千万结。";
         }
 
         public void setAuthor(String author) {
