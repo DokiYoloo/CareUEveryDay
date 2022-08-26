@@ -11,7 +11,7 @@ import cn.hutool.json.JSONUtil;
 public class RandomAncientPoetry {
 
     public static AncientPoetry getNext() {
-        String res = HttpUtil.get("https://v1.jinrishici.com/shuqing/aiqing", 4000);
+        // String res = HttpUtil.get("https://v1.jinrishici.com/shuqing/aiqing", 4000);
         return new AncientPoetry();
     }
 
