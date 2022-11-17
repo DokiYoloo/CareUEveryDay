@@ -21,16 +21,16 @@ public class GaodeUtil {
 
     public static Integer getAdcCode(String province, String city) {
         HttpResponse response = HttpUtil.createGet(String.format(GEO_API, key, province, city))
-                .setConnectionTimeout(3000)
-                .setReadTimeout(4000)
+                .setConnectionTimeout(10000)
+                .setReadTimeout(20000)
                 .execute();
         return parseObj(parseObj(response.body()).getJSONArray("geocodes").get(0)).getInt("adcode");
     }
 
     public static WeatherInfo getNowWeatherInfo(Integer adcCode) {
         HttpResponse response = HttpUtil.createGet(String.format(WEATHER_API, key, adcCode, "base"))
-                .setConnectionTimeout(3000)
-                .setReadTimeout(4000)
+                .setConnectionTimeout(10000)
+                .setReadTimeout(20000)
                 .execute();
         List<WeatherInfo> lives =
                 parseObj(response.body()).getJSONArray("lives").toList(WeatherInfo.class);
