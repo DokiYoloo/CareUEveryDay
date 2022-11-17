@@ -28,7 +28,7 @@ public class RandomAncientPoetry {
 
     public static AncientPoetry getNext() {
         try {
-            String res = HttpUtil.get("https://v1.jinrishici.com/shuqing/aiqing", 10000);
+            String res = HttpUtil.get("https://v1.jinrishici.com/shuqing/aiqing", 60000);
             return JSONUtil.parseObj(res).toBean(AncientPoetry.class);
         } catch (Exception e) {
             System.err.println("诗词调用失败，随机返回");
